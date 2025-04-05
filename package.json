@@ -2,7 +2,7 @@
   "name": "wedding-website",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://mirapm.github.io/wedding-website",
+  "homepage": "https://miroslavreznik.github.io/wedding-website",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
