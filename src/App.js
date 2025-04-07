@@ -40,6 +40,31 @@ const App = () => {
         </p>
       </Section>
 
+      {/* New Program Section */}
+      <Section>
+        <motion.h2 {...scrollFade}>Program</motion.h2>
+        <ul>
+          <li>
+            <strong>10:00</strong> – Přivítání hostů a úvodní slovo
+          </li>
+          <li>
+            <strong>11:00</strong> – Svatba a obřad
+          </li>
+          <li>
+            <strong>12:00</strong> – Svatební oběd
+          </li>
+          <li>
+            <strong>14:00</strong> – Taneční zábava a program
+          </li>
+          <li>
+            <strong>17:00</strong> – Krájení svatebního dortu a přípitek
+          </li>
+          <li>
+            <strong>20:00</strong> – Večerní párty
+          </li>
+        </ul>
+      </Section>
+
       <GallerySection>
         <Carousel showThumbs={false} infiniteLoop autoPlay>
           <div>
@@ -74,6 +99,16 @@ const App = () => {
           <Button type="submit">Odeslat</Button>
         </RSVPForm>
       </RSVPSection>
+
+      {/* New Podrobnosti Section */}
+      <Section>
+        <motion.h2 {...scrollFade}>Podrobnosti</motion.h2>
+        <p>Barvy naší svatby:</p>
+        <ImageContainer>
+          <img src={`${process.env.PUBLIC_URL}/colours.png`} alt="Svatba Colours" style={{ width: "100%", borderRadius: "10px" }} />
+        </ImageContainer>
+        <p>Naše svatební barvy jsou teplé odstíny růžové, červené a zlaté, které přinášejí pocit elegance a romantiky.</p>
+      </Section>
 
       <FooterImage src={`${process.env.PUBLIC_URL}/footer.jpg`} alt="Wedding Footer" />
 
@@ -171,6 +206,13 @@ const Footer = styled.footer`
   padding: 20px;
   font-size: 50px;
   font-weight: bold;
+`;
+
+const ImageContainer = styled.div`
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const scrollFade = {
