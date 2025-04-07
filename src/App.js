@@ -11,6 +11,17 @@ const colors = {
   text: "#865151"
 };
 
+const carouselImageWrapperStyle = (imageName) => ({
+  backgroundImage: `url(${process.env.PUBLIC_URL}/${imageName})`,
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  filter: "blur(20px)",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  height: "500px"
+});
+
 const App = () => {
   return (
     <div style={{ backgroundColor: colors.background, color: colors.text }}>
@@ -43,34 +54,17 @@ const App = () => {
       {/* Gallery */}
       <motion.section style={sectionStyle} {...scrollFade}>
         <Carousel showThumbs={false} infiniteLoop autoPlay>
-          <div>
-            <img
-              src={`${process.env.PUBLIC_URL}/gallery1.jpg`}
-              alt="Gallery 1"
-              style={galleryImageStyle}
-            />
-          </div>
-          <div>
-            <img
-              src={`${process.env.PUBLIC_URL}/gallery2.jpg`}
-              alt="Gallery 2"
-              style={galleryImageStyle}
-            />
-          </div>
-          <div>
-            <img
-              src={`${process.env.PUBLIC_URL}/gallery3.jpg`}
-              alt="Gallery 3"
-              style={galleryImageStyle}
-            />
-          </div>
-          <div>
-            <img
-              src={`${process.env.PUBLIC_URL}/gallery4.jpg`}
-              alt="Gallery 4"
-              style={galleryImageStyle}
-            />
-          </div>
+          {['gallery1.jpg', 'gallery2.jpg', 'gallery3.jpg', 'gallery4.jpg'].map((img, index) => (
+            <div key={index}>
+              <div style={carouselImageWrapperStyle(img)}>
+                <img
+                  src={`${process.env.PUBLIC_URL}/${img}`}
+                  alt={`Gallery ${index + 1}`}
+                  style={galleryImageStyle}
+                />
+              </div>
+            </div>
+          ))}
         </Carousel>
       </motion.section>
 
@@ -118,19 +112,15 @@ const sectionStyle = {
   boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)"
 };
 
-// Styles for the gallery image to handle both portrait and landscape
+// Gallery image styling
 const galleryImageStyle = {
-  maxHeight: "500px",
-  width: "auto",
-  height: "auto",
-  maxWidth: "100%",
-  objectFit: "contain",
+  maxHeight: "90%",
+  maxWidth: "90%",
   borderRadius: "10px",
-  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
-  display: "block",
-  margin: "0 auto",
+  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
+  objectFit: "contain",
+  zIndex: 1,
 };
-
 
 // Motion settings for scroll fade-in effect
 const scrollFade = {
