@@ -15,7 +15,11 @@ const App = () => {
   return (
     <div style={{ backgroundColor: colors.background, color: colors.text }}>
       {/* Hero Image */}
-      <img src={`${process.env.PUBLIC_URL}/hero.jpg`} alt="Wedding Hero" style={{ width: "100%", height: "auto" }} />
+      <img
+        src={`${process.env.PUBLIC_URL}/hero.jpg`}
+        alt="Wedding Hero"
+        style={{ width: "100%", height: "auto", objectFit: "cover" }}
+      />
 
       {/* Header with motion */}
       <motion.header
@@ -40,9 +44,27 @@ const App = () => {
       <motion.section style={sectionStyle} {...scrollFade}>
         <h2>Gallery</h2>
         <Carousel showThumbs={false} infiniteLoop autoPlay>
-          <div><img src={`${process.env.PUBLIC_URL}/gallery1.jpg`} alt="Gallery 1" /></div>
-          <div><img src={`${process.env.PUBLIC_URL}/gallery2.jpg`} alt="Gallery 2" /></div>
-          <div><img src={`${process.env.PUBLIC_URL}/gallery3.jpg`} alt="Gallery 3" /></div>
+          <div>
+            <img
+              src={`${process.env.PUBLIC_URL}/gallery1.jpg`}
+              alt="Gallery 1"
+              style={galleryImageStyle}
+            />
+          </div>
+          <div>
+            <img
+              src={`${process.env.PUBLIC_URL}/gallery2.jpg`}
+              alt="Gallery 2"
+              style={galleryImageStyle}
+            />
+          </div>
+          <div>
+            <img
+              src={`${process.env.PUBLIC_URL}/gallery3.jpg`}
+              alt="Gallery 3"
+              style={galleryImageStyle}
+            />
+          </div>
         </Carousel>
       </motion.section>
 
@@ -66,7 +88,11 @@ const App = () => {
       </motion.section>
 
       {/* Footer Image */}
-      <img src={`${process.env.PUBLIC_URL}/footer.jpg`} alt="Wedding Footer" style={{ width: "100%", marginTop: "40px" }} />
+      <img
+        src={`${process.env.PUBLIC_URL}/footer.jpg`}
+        alt="Wedding Footer"
+        style={{ width: "100%", marginTop: "40px" }}
+      />
 
       <footer style={{ textAlign: "center", padding: "20px" }}>
         <p>Tááákhle moc se na Vás těšíme! ❤️</p>
@@ -75,6 +101,7 @@ const App = () => {
   );
 };
 
+// Styles for the sections
 const sectionStyle = {
   background: "white",
   padding: "20px",
@@ -85,6 +112,16 @@ const sectionStyle = {
   boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)"
 };
 
+// Styles for the gallery image to handle both portrait and landscape
+const galleryImageStyle = {
+  width: "100%",
+  height: "auto",
+  objectFit: "cover", // Ensures the images fit well without distortion
+  borderRadius: "10px",
+  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)"
+};
+
+// Motion settings for scroll fade-in effect
 const scrollFade = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
@@ -92,6 +129,7 @@ const scrollFade = {
   transition: { duration: 0.6 }
 };
 
+// Form and button styling
 const formStyle = {
   display: "flex",
   flexDirection: "column",
