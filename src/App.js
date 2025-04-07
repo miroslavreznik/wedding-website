@@ -105,9 +105,8 @@ const App = () => {
         <motion.h2 {...scrollFade}>Podrobnosti</motion.h2>
         <p>Barvy naší svatby:</p>
         <ImageContainer>
-          <img src={`${process.env.PUBLIC_URL}/colours.png`} alt="Svatba Colours" style={{ width: "100%", borderRadius: "10px" }} />
+          <img src={`${process.env.PUBLIC_URL}/colours.png`} alt="Svatba Colours" style={{ width: "10%", borderRadius: "10px" }} />
         </ImageContainer>
-        <p>Naše svatební barvy jsou teplé odstíny růžové, červené a zlaté, které přinášejí pocit elegance a romantiky.</p>
       </Section>
 
       <FooterImage src={`${process.env.PUBLIC_URL}/footer.jpg`} alt="Wedding Footer" />
