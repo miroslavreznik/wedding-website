@@ -161,7 +161,10 @@ const arrowStyle = {
   fontSize: "36px",
   cursor: "pointer",
   padding: "10px",
-  zIndex: "10"
+  zIndex: "10",
+  position: "absolute", // Absolute positioning
+  top: "50%", // Vertically center
+  transform: "translateY(-50%)", // Center by adjusting top to 50% and translating up by half of its own height
 };
 
 // Motion settings for scroll fade-in effect
