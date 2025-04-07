@@ -52,17 +52,18 @@ const App = () => {
 
       {/* Gallery */}
       <motion.section style={sectionStyle} {...scrollFade}>
-        <Carousel showThumbs={false} infiniteLoop autoPlay showStatus={false}>
+        <Carousel
+          showThumbs={false}
+          infiniteLoop
+          autoPlay
+          showStatus={false}
+          emulateTouch
+          transitionTime={600}
+          swipeable
+          dynamicHeight={false}
+        >
           {["gallery1.jpg", "gallery2.jpg", "gallery3.jpg", "gallery4.jpg"].map((file, idx) => (
             <div key={idx} style={carouselSlideStyle}>
-              {/* Blurred background image */}
-              <div
-                style={{
-                  ...backgroundBlurStyle,
-                  backgroundImage: `url(${process.env.PUBLIC_URL}/${file})`
-                }}
-              />
-              {/* Foreground image */}
               <img
                 src={`${process.env.PUBLIC_URL}/${file}`}
                 alt={`Gallery ${idx + 1}`}
@@ -137,38 +138,21 @@ const sectionStyle = {
 
 // Carousel slide wrapper
 const carouselSlideStyle = {
-  position: "relative",
   width: "100%",
   height: "500px",
-  overflow: "hidden",
   display: "flex",
   justifyContent: "center",
-  alignItems: "center"
-};
-
-// Background blur style
-const backgroundBlurStyle = {
-  position: "absolute",
-  top: 0,
-  left: 0,
-  width: "100%",
-  height: "100%",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  filter: "blur(20px)",
-  transform: "scale(1.1)",
-  zIndex: 1
+  alignItems: "center",
+  backgroundColor: "#fff"
 };
 
 // Foreground image style
 const galleryImageStyle = {
-  maxHeight: "90%",
-  maxWidth: "90%",
+  maxHeight: "100%",
+  maxWidth: "100%",
   objectFit: "contain",
   borderRadius: "10px",
-  boxShadow: "0px 0px 15px rgba(0, 0, 0, 0.2)",
-  position: "relative",
-  zIndex: 2
+  boxShadow: "0px 0px 15px rgba(0, 0, 0, 0.2)"
 };
 
 // Motion settings for scroll fade-in effect
