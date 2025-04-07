@@ -100,9 +100,9 @@ const App = () => {
         style={{ width: "100%", marginTop: "40px" }}
       />
 
-  <footer style={{ textAlign: "center", padding: "20px" }}>
-    <p style={{ fontSize: "50px", fontWeight: "bold" }}>Tááákhle moc se na Vás těšíme! ❤️</p>
-  </footer>
+      <footer style={{ textAlign: "center", padding: "20px" }}>
+        <p style={{ fontSize: "50px", fontWeight: "bold" }}>Tááákhle moc se na Vás těšíme! ❤️</p>
+      </footer>
     </div>
   );
 };
