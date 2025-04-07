@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const colors = {
@@ -10,17 +10,6 @@ const colors = {
   accent: "#7d7c6d",
   text: "#865151"
 };
-
-const carouselImageWrapperStyle = (imageName) => ({
-  backgroundImage: `url(${process.env.PUBLIC_URL}/${imageName})`,
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  filter: "blur(20px)",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  height: "500px"
-});
 
 const App = () => {
   return (
@@ -40,29 +29,45 @@ const App = () => {
         transition={{ duration: 0.6 }}
       >
         <h1>Zveme Vás na Naší svatbu!</h1>
-        <p>Po dlouhém zkušebním provozu to chceme posunout na další level a oslavit tuto příležitost právě s Vámi! Potkali jsme se s Klárkou 23.08.2017 a je na čase se vzít! blabla </p>
+        <p>
+          Po dlouhém zkušebním provozu to chceme posunout na další level a
+          oslavit tuto příležitost právě s Vámi! Potkali jsme se s Klárkou
+          23.08.2017 a je na čase se vzít! blabla
+        </p>
       </motion.header>
 
       {/* Sliding sections */}
       <motion.section style={sectionStyle} {...scrollFade}>
         <h2>Kdy a kde</h2>
-        <p><strong>Datum:</strong> 20.9.2025</p>
-        <p><strong>Místo:</strong> Penzion Na Lukách, Široký důl</p>
-        <p><strong>Začátek:</strong> 10:00</p>
+        <p>
+          <strong>Datum:</strong> 20.9.2025
+        </p>
+        <p>
+          <strong>Místo:</strong> Penzion Na Lukách, Široký důl
+        </p>
+        <p>
+          <strong>Začátek:</strong> 10:00
+        </p>
       </motion.section>
 
       {/* Gallery */}
       <motion.section style={sectionStyle} {...scrollFade}>
-        <Carousel showThumbs={false} infiniteLoop autoPlay>
-          {['gallery1.jpg', 'gallery2.jpg', 'gallery3.jpg', 'gallery4.jpg'].map((img, index) => (
-            <div key={index}>
-              <div style={carouselImageWrapperStyle(img)}>
-                <img
-                  src={`${process.env.PUBLIC_URL}/${img}`}
-                  alt={`Gallery ${index + 1}`}
-                  style={galleryImageStyle}
-                />
-              </div>
+        <Carousel showThumbs={false} infiniteLoop autoPlay showStatus={false}>
+          {["gallery1.jpg", "gallery2.jpg", "gallery3.jpg", "gallery4.jpg"].map((file, idx) => (
+            <div key={idx} style={carouselSlideStyle}>
+              {/* Blurred background image */}
+              <div
+                style={{
+                  ...backgroundBlurStyle,
+                  backgroundImage: `url(${process.env.PUBLIC_URL}/${file})`
+                }}
+              />
+              {/* Foreground image */}
+              <img
+                src={`${process.env.PUBLIC_URL}/${file}`}
+                alt={`Gallery ${idx + 1}`}
+                style={galleryImageStyle}
+              />
             </div>
           ))}
         </Carousel>
@@ -71,9 +76,25 @@ const App = () => {
       {/* RSVP */}
       <motion.section style={sectionStyle} {...scrollFade}>
         <h2>Dondeš? A řekneš nám víc?</h2>
-        <form action="https://formspree.io/f/mpwpjeoe" method="POST" style={formStyle}>
-          <input type="text" name="name" placeholder="Tvoje jméno" required style={inputStyle} />
-          <input type="email" name="email" placeholder="Email" required style={inputStyle} />
+        <form
+          action="https://formspree.io/f/mpwpjeoe"
+          method="POST"
+          style={formStyle}
+        >
+          <input
+            type="text"
+            name="name"
+            placeholder="Tvoje jméno"
+            required
+            style={inputStyle}
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+            style={inputStyle}
+          />
           <select name="attendance" style={inputStyle}>
             <option value="yes">Ano</option>
             <option value="no">Ne</option>
@@ -83,7 +104,9 @@ const App = () => {
             <option value="chicken">Rolované kuře s bramborovou kaší</option>
             <option value="sirloin">Vepřová panenka a bramborové pyré</option>
           </select>
-          <button type="submit" style={buttonStyle}>Odeslat</button>
+          <button type="submit" style={buttonStyle}>
+            Odeslat
+          </button>
         </form>
       </motion.section>
 
@@ -112,14 +135,40 @@ const sectionStyle = {
   boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)"
 };
 
-// Gallery image styling
+// Carousel slide wrapper
+const carouselSlideStyle = {
+  position: "relative",
+  width: "100%",
+  height: "500px",
+  overflow: "hidden",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center"
+};
+
+// Background blur style
+const backgroundBlurStyle = {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  filter: "blur(20px)",
+  transform: "scale(1.1)",
+  zIndex: 1
+};
+
+// Foreground image style
 const galleryImageStyle = {
   maxHeight: "90%",
   maxWidth: "90%",
-  borderRadius: "10px",
-  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
   objectFit: "contain",
-  zIndex: 1,
+  borderRadius: "10px",
+  boxShadow: "0px 0px 15px rgba(0, 0, 0, 0.2)",
+  position: "relative",
+  zIndex: 2
 };
 
 // Motion settings for scroll fade-in effect
