@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const colors = {
   background: "#d9b9b0",
-  primary: "#673535",
+  primary: "#673535", // Svatební barva pro šipky
   secondary: "#3e161b",
   accent: "#7d7c6d",
   text: "#865151"
@@ -14,8 +14,6 @@ const colors = {
 const App = () => {
   return (
     <div style={{ backgroundColor: colors.background, color: colors.text }}>
-      <style>{carouselStyles}</style>
-
       {/* Hero Image */}
       <img
         src={`${process.env.PUBLIC_URL}/hero.jpg`}
@@ -44,16 +42,60 @@ const App = () => {
 
       {/* Gallery */}
       <motion.section style={sectionStyle} {...scrollFade}>
-        <Carousel showThumbs={false} infiniteLoop autoPlay className="custom-carousel">
-          {['gallery1.jpg', 'gallery2.jpg', 'gallery3.jpg', 'gallery4.jpg'].map((img, index) => (
-            <div key={index} style={carouselItemStyle}>
-              <img
-                src={`${process.env.PUBLIC_URL}/${img}`}
-                alt={`Gallery ${index + 1}`}
-                style={galleryImageStyle}
-              />
-            </div>
-          ))}
+        <Carousel
+          showThumbs={false}
+          infiniteLoop
+          autoPlay
+          renderArrowPrev={(clickHandler, hasPrev) => 
+            hasPrev && (
+              <div
+                onClick={clickHandler}
+                className="custom-arrow custom-arrow-left"
+                style={arrowStyle}
+              >
+                &lt;
+              </div>
+            )}
+          renderArrowNext={(clickHandler, hasNext) =>
+            hasNext && (
+              <div
+                onClick={clickHandler}
+                className="custom-arrow custom-arrow-right"
+                style={arrowStyle}
+              >
+                &gt;
+              </div>
+            )}
+          }
+        >
+          <div>
+            <img
+              src={`${process.env.PUBLIC_URL}/gallery1.jpg`}
+              alt="Gallery 1"
+              style={galleryImageStyle}
+            />
+          </div>
+          <div>
+            <img
+              src={`${process.env.PUBLIC_URL}/gallery2.jpg`}
+              alt="Gallery 2"
+              style={galleryImageStyle}
+            />
+          </div>
+          <div>
+            <img
+              src={`${process.env.PUBLIC_URL}/gallery3.jpg`}
+              alt="Gallery 3"
+              style={galleryImageStyle}
+            />
+          </div>
+          <div>
+            <img
+              src={`${process.env.PUBLIC_URL}/gallery4.jpg`}
+              alt="Gallery 4"
+              style={galleryImageStyle}
+            />
+          </div>
         </Carousel>
       </motion.section>
 
@@ -101,24 +143,29 @@ const sectionStyle = {
   boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)"
 };
 
-const carouselItemStyle = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  height: "500px",
-  overflow: "hidden"
-};
-
+// Styles for the gallery image to handle both portrait and landscape
 const galleryImageStyle = {
-  maxHeight: "100%",
-  maxWidth: "100%",
-  height: "auto",
+  maxHeight: "500px",
   width: "auto",
+  height: "auto",
+  maxWidth: "100%",
   objectFit: "contain",
   borderRadius: "10px",
-  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)"
+  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
+  display: "block",
+  margin: "0 auto",
 };
 
+// Custom Arrow Style for Carousel (with wedding color)
+const arrowStyle = {
+  color: colors.primary, // Set arrow color to the wedding color
+  fontSize: "36px",
+  cursor: "pointer",
+  padding: "10px",
+  zIndex: "10"
+};
+
+// Motion settings for scroll fade-in effect
 const scrollFade = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
@@ -126,6 +173,7 @@ const scrollFade = {
   transition: { duration: 0.6 }
 };
 
+// Form and button styling
 const formStyle = {
   display: "flex",
   flexDirection: "column",
@@ -149,22 +197,5 @@ const buttonStyle = {
   borderRadius: "5px",
   cursor: "pointer"
 };
-
-const carouselStyles = `
-  .custom-carousel .control-arrow {
-    width: 60px !important;
-    background: transparent !important;
-    color: #673535 !important;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
-  }
-  .custom-carousel .control-arrow:hover {
-    opacity: 1;
-  }
-  .custom-carousel .control-prev.control-arrow::before,
-  .custom-carousel .control-next.control-arrow::before {
-    font-size: 30px;
-  }
-`;
 
 export default App;
