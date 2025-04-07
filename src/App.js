@@ -24,16 +24,16 @@ const App = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1>Welcome to Our Wedding!</h1>
-        <p>We are excited to celebrate with you!</p>
+        <h1>Zveme Vás na Naší svatbu!</h1>
+        <p>Po dlouhém zkušebním provozu to chceme posunout na další level a oslavit tuto příležitost právě s Vámi! Potkali jsme se s Klárkou 23.08.2017 a je na čase se vzít! blabla </p>
       </motion.header>
 
       {/* Sliding sections */}
       <motion.section style={sectionStyle} {...scrollFade}>
-        <h2>Event Details</h2>
-        <p><strong>Date:</strong> [Your Wedding Date]</p>
-        <p><strong>Location:</strong> [Your Wedding Venue]</p>
-        <p><strong>Time:</strong> [Wedding Time]</p>
+        <h2>Kdy a kde</h2>
+        <p><strong>Datum:</strong> 20.9.2025</p>
+        <p><strong>Místo:</strong> Penzion Na Lukách, Široký důl</p>
+        <p><strong>Začátek:</strong> 10:00</p>
       </motion.section>
 
       {/* Gallery */}
@@ -48,20 +48,20 @@ const App = () => {
 
       {/* RSVP */}
       <motion.section style={sectionStyle} {...scrollFade}>
-        <h2>RSVP</h2>
+        <h2>Dondeš? A řekneš nám víc?</h2>
         <form action="https://formspree.io/f/mpwpjeoe" method="POST" style={formStyle}>
-          <input type="text" name="name" placeholder="Your Name" required style={inputStyle} />
+          <input type="text" name="name" placeholder="Tvoje jméno" required style={inputStyle} />
           <input type="email" name="email" placeholder="Email" required style={inputStyle} />
           <select name="attendance" style={inputStyle}>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+            <option value="yes">Ano</option>
+            <option value="no">Ne</option>
           </select>
           <select name="meal" style={inputStyle}>
-            <option value="chicken">Chicken</option>
-            <option value="vegetarian">Vegetarian</option>
-            <option value="fish">Fish</option>
+            <option value="svickova">Svíčková na smetaně</option>
+            <option value="chicken">Rolované kuře s bramborovou kaší</option>
+            <option value="sirloin">Vepřová panenka a bramborové pyré</option>
           </select>
-          <button type="submit" style={buttonStyle}>Submit</button>
+          <button type="submit" style={buttonStyle}>Odeslat</button>
         </form>
       </motion.section>
 
@@ -69,7 +69,7 @@ const App = () => {
       <img src={`${process.env.PUBLIC_URL}/footer.jpg`} alt="Wedding Footer" style={{ width: "100%", marginTop: "40px" }} />
 
       <footer style={{ textAlign: "center", padding: "20px" }}>
-        <p>We can't wait to celebrate with you! ❤️</p>
+        <p>Tááákhle moc se na Vás těšíme! ❤️</p>
       </footer>
     </div>
   );
