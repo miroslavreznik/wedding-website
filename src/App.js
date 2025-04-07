@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const colors = {
   background: "#d9b9b0",
-  primary: "#673535", // Svatební barva pro šipky
+  primary: "#673535",
   secondary: "#3e161b",
   accent: "#7d7c6d",
   text: "#865151"
@@ -42,31 +42,7 @@ const App = () => {
 
       {/* Gallery */}
       <motion.section style={sectionStyle} {...scrollFade}>
-        <Carousel
-          showThumbs={false}
-          infiniteLoop
-          autoPlay
-          renderArrowPrev={(clickHandler, hasPrev) => 
-            hasPrev && (
-              <div
-                onClick={clickHandler}
-                className="custom-arrow custom-arrow-left"
-                style={arrowLeftStyle}
-              >
-                &lt;
-              </div>
-            )}
-          renderArrowNext={(clickHandler, hasNext) =>
-            hasNext && (
-              <div
-                onClick={clickHandler}
-                className="custom-arrow custom-arrow-right"
-                style={arrowRightStyle}
-              >
-                &gt;
-              </div>
-            )}
-        >
+        <Carousel showThumbs={false} infiniteLoop autoPlay>
           <div>
             <img
               src={`${process.env.PUBLIC_URL}/gallery1.jpg`}
@@ -153,30 +129,6 @@ const galleryImageStyle = {
   boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
   display: "block",
   margin: "0 auto",
-};
-
-// Custom Arrow Style for Carousel (with wedding color)
-const arrowStyle = {
-  color: colors.primary, // Set arrow color to the wedding color
-  fontSize: "36px",
-  cursor: "pointer",
-  padding: "10px",
-  zIndex: "10",
-  position: "absolute", // Absolute positioning
-  top: "50%", // Vertically center
-  transform: "translateY(-50%)", // Center by adjusting top to 50% and translating up by half of its own height
-};
-
-// Custom Left Arrow Positioning
-const arrowLeftStyle = {
-  ...arrowStyle,
-  left: "0", // Left side of the image
-};
-
-// Custom Right Arrow Positioning
-const arrowRightStyle = {
-  ...arrowStyle,
-  right: "0", // Right side of the image
 };
 
 // Motion settings for scroll fade-in effect
