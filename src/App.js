@@ -120,19 +120,17 @@ const sectionStyle = {
 
 // Styles for the gallery image to handle both portrait and landscape
 const galleryImageStyle = {
-  width: "100%",
+  maxHeight: "500px",
+  width: "auto",
   height: "auto",
-  objectFit: "cover", // Ensures the images fill their container without distortion for landscape
+  maxWidth: "100%",
+  objectFit: "contain",
   borderRadius: "10px",
   boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
-  marginBottom: "20px", // Adds spacing between images
-  
-  // For portrait images (vertical images), we'll limit their max height
-  maxHeight: "500px", // Maximum height for tall images to prevent them from stretching too much
   display: "block",
-  marginLeft: "auto",
-  marginRight: "auto", // Centers the image horizontally
+  margin: "0 auto",
 };
+
 
 // Motion settings for scroll fade-in effect
 const scrollFade = {
