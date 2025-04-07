@@ -64,7 +64,7 @@ const App = () => {
               style={galleryImageStyle}
             />
           </div>
-                    <div>
+          <div>
             <img
               src={`${process.env.PUBLIC_URL}/gallery4.jpg`}
               alt="Gallery 4"
@@ -124,7 +124,9 @@ const galleryImageStyle = {
   height: "auto",
   objectFit: "cover", // Ensures the images fit well without distortion
   borderRadius: "10px",
-  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)"
+  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
+  maxHeight: "500px", // Limit the max height to prevent images from stretching too tall
+  marginBottom: "20px", // Space between images
 };
 
 // Motion settings for scroll fade-in effect
