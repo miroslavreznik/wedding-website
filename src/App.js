@@ -8,12 +8,14 @@ const colors = {
   primary: "#673535",
   secondary: "#3e161b",
   accent: "#7d7c6d",
-  text: "#865151"
+  text: "#865151",
 };
 
 const App = () => {
   return (
     <div style={{ backgroundColor: colors.background, color: colors.text }}>
+      <style>{carouselStyles}</style>
+
       {/* Hero Image */}
       <img
         src={`${process.env.PUBLIC_URL}/hero.jpg`}
@@ -56,21 +58,39 @@ const App = () => {
           showThumbs={false}
           infiniteLoop
           autoPlay
-          showStatus={false}
-          emulateTouch
-          transitionTime={600}
+          transitionTime={800}
           swipeable
-          dynamicHeight={false}
+          emulateTouch
+          className="custom-carousel"
         >
-          {["gallery1.jpg", "gallery2.jpg", "gallery3.jpg", "gallery4.jpg"].map((file, idx) => (
-            <div key={idx} style={carouselSlideStyle}>
-              <img
-                src={`${process.env.PUBLIC_URL}/${file}`}
-                alt={`Gallery ${idx + 1}`}
-                style={galleryImageStyle}
-              />
-            </div>
-          ))}
+          <div>
+            <img
+              src={`${process.env.PUBLIC_URL}/gallery1.jpg`}
+              alt="Gallery 1"
+              style={galleryImageStyle}
+            />
+          </div>
+          <div>
+            <img
+              src={`${process.env.PUBLIC_URL}/gallery2.jpg`}
+              alt="Gallery 2"
+              style={galleryImageStyle}
+            />
+          </div>
+          <div>
+            <img
+              src={`${process.env.PUBLIC_URL}/gallery3.jpg`}
+              alt="Gallery 3"
+              style={galleryImageStyle}
+            />
+          </div>
+          <div>
+            <img
+              src={`${process.env.PUBLIC_URL}/gallery4.jpg`}
+              alt="Gallery 4"
+              style={galleryImageStyle}
+            />
+          </div>
         </Carousel>
       </motion.section>
 
@@ -133,34 +153,40 @@ const sectionStyle = {
   borderRadius: "10px",
   width: "90%",
   maxWidth: "800px",
-  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)"
+  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
 };
 
-// Carousel slide wrapper
-const carouselSlideStyle = {
-  width: "100%",
-  height: "500px",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  backgroundColor: "#fff"
-};
-
-// Foreground image style
+// Styles for the gallery image
 const galleryImageStyle = {
-  maxHeight: "100%",
+  maxHeight: "500px",
   maxWidth: "100%",
+  width: "auto",
+  height: "auto",
   objectFit: "contain",
   borderRadius: "10px",
-  boxShadow: "0px 0px 15px rgba(0, 0, 0, 0.2)"
+  display: "block",
+  margin: "0 auto",
 };
+
+// Custom CSS overrides for Carousel arrows
+const carouselStyles = `
+  .custom-carousel .control-arrow {
+    width: 60px !important;
+    background: transparent !important;
+  }
+
+  .custom-carousel .control-prev.control-arrow::before,
+  .custom-carousel .control-next.control-arrow::before {
+    font-size: 30px;
+  }
+`;
 
 // Motion settings for scroll fade-in effect
 const scrollFade = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.6 }
+  transition: { duration: 0.6 },
 };
 
 // Form and button styling
@@ -168,7 +194,7 @@ const formStyle = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  gap: "10px"
+  gap: "10px",
 };
 
 const inputStyle = {
@@ -176,7 +202,7 @@ const inputStyle = {
   width: "80%",
   maxWidth: "300px",
   borderRadius: "5px",
-  border: "1px solid #ccc"
+  border: "1px solid #ccc",
 };
 
 const buttonStyle = {
@@ -185,7 +211,7 @@ const buttonStyle = {
   padding: "10px",
   border: "none",
   borderRadius: "5px",
-  cursor: "pointer"
+  cursor: "pointer",
 };
 
 export default App;
