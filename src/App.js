@@ -42,7 +42,6 @@ const App = () => {
 
       {/* Gallery */}
       <motion.section style={sectionStyle} {...scrollFade}>
-        <h2>Gallery</h2>
         <Carousel showThumbs={false} infiniteLoop autoPlay>
           <div>
             <img
@@ -62,6 +61,13 @@ const App = () => {
             <img
               src={`${process.env.PUBLIC_URL}/gallery3.jpg`}
               alt="Gallery 3"
+              style={galleryImageStyle}
+            />
+          </div>
+                    <div>
+            <img
+              src={`${process.env.PUBLIC_URL}/gallery4.jpg`}
+              alt="Gallery 4"
               style={galleryImageStyle}
             />
           </div>
