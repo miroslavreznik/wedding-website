@@ -1,181 +1,183 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import styled from "styled-components";
 
 const colors = {
   background: "#d9b9b0",
   primary: "#673535",
   secondary: "#3e161b",
   accent: "#7d7c6d",
-  text: "#865151"
+  text: "#865151",
 };
 
 const App = () => {
   return (
-    <div style={{ backgroundColor: colors.background, color: colors.text }}>
-      {/* Hero Image */}
-      <img
-        src={`${process.env.PUBLIC_URL}/hero.jpg`}
-        alt="Wedding Hero"
-        style={{ width: "100%", height: "auto", objectFit: "cover" }}
-      />
+    <Wrapper>
+      <HeroImage src={`${process.env.PUBLIC_URL}/hero.jpg`} alt="Wedding Hero" />
 
-      {/* Header with motion */}
-      <motion.header
-        style={sectionStyle}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <h1>Zveme Vás na Naší svatbu!</h1>
-        <p>Po dlouhém zkušebním provozu to chceme posunout na další level a oslavit tuto příležitost právě s Vámi! Potkali jsme se s Klárkou 23.08.2017 a je na čase se vzít! blabla </p>
-      </motion.header>
+      <Header>
+        <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          Zveme Vás na Naší svatbu!
+        </motion.h1>
+        <p>
+          Po dlouhém zkušebním provozu to chceme posunout na další level a oslavit tuto příležitost právě s Vámi! Potkali
+          jsme se s Klárkou 23.08.2017 a je na čase se vzít! blabla
+        </p>
+      </Header>
 
-      {/* Sliding sections */}
-      <motion.section style={sectionStyle} {...scrollFade}>
-        <h2>Kdy a kde</h2>
-        <p><strong>Datum:</strong> 20.9.2025</p>
-        <p><strong>Místo:</strong> Penzion Na Lukách, Široký důl</p>
-        <p><strong>Začátek:</strong> 10:00</p>
-      </motion.section>
+      <Section>
+        <motion.h2 {...scrollFade}>Kdy a kde</motion.h2>
+        <p>
+          <strong>Datum:</strong> 20.9.2025
+        </p>
+        <p>
+          <strong>Místo:</strong> Penzion Na Lukách, Široký důl
+        </p>
+        <p>
+          <strong>Začátek:</strong> 10:00
+        </p>
+      </Section>
 
-      {/* Gallery */}
-      <motion.section style={sectionStyle} {...scrollFade}>
+      <GallerySection>
         <Carousel showThumbs={false} infiniteLoop autoPlay>
           <div>
-            <img
-              src={`${process.env.PUBLIC_URL}/gallery1.jpg`}
-              alt="Gallery 1"
-              style={galleryImageStyle}
-            />
+            <GalleryImage src={`${process.env.PUBLIC_URL}/gallery1.jpg`} alt="Gallery 1" />
           </div>
           <div>
-            <img
-              src={`${process.env.PUBLIC_URL}/gallery2.jpg`}
-              alt="Gallery 2"
-              style={galleryImageStyle}
-            />
+            <GalleryImage src={`${process.env.PUBLIC_URL}/gallery2.jpg`} alt="Gallery 2" />
           </div>
           <div>
-            <img
-              src={`${process.env.PUBLIC_URL}/gallery3.jpg`}
-              alt="Gallery 3"
-              style={galleryImageStyle}
-            />
+            <GalleryImage src={`${process.env.PUBLIC_URL}/gallery3.jpg`} alt="Gallery 3" />
           </div>
           <div>
-            <img
-              src={`${process.env.PUBLIC_URL}/gallery4.jpg`}
-              alt="Gallery 4"
-              style={galleryImageStyle}
-            />
+            <GalleryImage src={`${process.env.PUBLIC_URL}/gallery4.jpg`} alt="Gallery 4" />
           </div>
         </Carousel>
-      </motion.section>
+      </GallerySection>
 
-      {/* RSVP */}
-      <motion.section style={sectionStyle} {...scrollFade}>
-        <h2>Dondeš? A řekneš nám víc?</h2>
-        <form action="https://formspree.io/f/mpwpjeoe" method="POST" style={formStyle}>
-          <input type="text" name="name" placeholder="Tvoje jméno" required style={inputStyle} />
-          <input type="email" name="email" placeholder="Email" required style={inputStyle} />
-          <select name="attendance" style={inputStyle}>
+      <RSVPSection>
+        <motion.h2 {...scrollFade}>Dondeš? A řekneš nám víc?</motion.h2>
+        <RSVPForm action="https://formspree.io/f/mpwpjeoe" method="POST">
+          <Input type="text" name="name" placeholder="Tvoje jméno" required />
+          <Input type="email" name="email" placeholder="Email" required />
+          <Select name="attendance">
             <option value="yes">Ano</option>
             <option value="no">Ne</option>
-          </select>
-          <select name="meal" style={inputStyle}>
+          </Select>
+          <Select name="meal">
             <option value="svickova">Svíčková na smetaně</option>
             <option value="chicken">Rolované kuře s bramborovou kaší</option>
             <option value="sirloin">Vepřová panenka a bramborové pyré</option>
-          </select>
-          <button type="submit" style={buttonStyle}>Odeslat</button>
-        </form>
-      </motion.section>
+          </Select>
+          <Button type="submit">Odeslat</Button>
+        </RSVPForm>
+      </RSVPSection>
 
-      {/* Footer Image */}
-      <img
-        src={`${process.env.PUBLIC_URL}/footer.jpg`}
-        alt="Wedding Footer"
-        style={{ width: "100%", marginTop: "40px" }}
-      />
+      <FooterImage src={`${process.env.PUBLIC_URL}/footer.jpg`} alt="Wedding Footer" />
 
-      <footer style={{ textAlign: "center", padding: "20px" }}>
-        <p style={{ fontSize: "50px", fontWeight: "bold" }}>Tááákhle moc se na Vás těšíme! ❤️</p>
-      </footer>
-    </div>
+      <Footer>
+        <p>Tááákhle moc se na Vás těšíme! ❤️</p>
+      </Footer>
+    </Wrapper>
   );
 };
 
-// Styles for the sections
-const sectionStyle = {
-  background: "white",
-  padding: "20px",
-  margin: "20px auto",
-  borderRadius: "10px",
-  width: "90%",
-  maxWidth: "800px",
-  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)"
-};
+const Wrapper = styled.div`
+  background-color: ${colors.background};
+  color: ${colors.text};
+  font-family: Arial, sans-serif;
+`;
 
-// Styles for the gallery image to handle both portrait and landscape
-const galleryImageStyle = {
-  maxHeight: "500px",
-  width: "auto",
-  height: "auto",
-  maxWidth: "100%",
-  objectFit: "contain",
-  borderRadius: "10px",
-  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
-  display: "block",
-  margin: "0 auto",
-};
+const HeroImage = styled.img`
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+`;
 
-// Motion settings for scroll fade-in effect
+const Header = styled.header`
+  text-align: center;
+  padding: 20px;
+`;
+
+const Section = styled.section`
+  background: white;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+`;
+
+const GallerySection = styled(Section)`
+  padding: 40px 20px;
+`;
+
+const GalleryImage = styled.img`
+  max-height: 500px;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 auto;
+`;
+
+const RSVPSection = styled(Section)``;
+
+const RSVPForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+`;
+
+const Input = styled.input`
+  padding: 10px;
+  width: 80%;
+  max-width: 300px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+`;
+
+const Select = styled.select`
+  padding: 10px;
+  width: 80%;
+  max-width: 300px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+`;
+
+const Button = styled.button`
+  background-color: ${colors.primary};
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+
+const FooterImage = styled.img`
+  width: 100%;
+  margin-top: 40px;
+`;
+
+const Footer = styled.footer`
+  text-align: center;
+  padding: 20px;
+  font-size: 50px;
+  font-weight: bold;
+`;
+
 const scrollFade = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.6 }
-};
-
-// Form and button styling
-const formStyle = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: "10px"
-};
-
-const inputStyle = {
-  padding: "10px",
-  width: "80%",
-  maxWidth: "300px",
-  borderRadius: "5px",
-  border: "1px solid #ccc"
-};
-
-const buttonStyle = {
-  backgroundColor: colors.primary,
-  color: "white",
-  padding: "10px",
-  border: "none",
-  borderRadius: "5px",
-  cursor: "pointer"
-};
-
-// Custom styles for carousel arrows
-const carouselArrowStyle = {
-  position: "absolute",
-  top: "50%",
-  transform: "translateY(-50%)",
-  backgroundColor: colors.primary,
-  border: "none",
-  padding: "10px",
-  borderRadius: "50%",
-  cursor: "pointer",
-  color: "white",
-  zIndex: "1"
+  transition: { duration: 0.6 },
 };
 
 export default App;
