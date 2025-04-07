@@ -51,7 +51,7 @@ const App = () => {
               <div
                 onClick={clickHandler}
                 className="custom-arrow custom-arrow-left"
-                style={arrowStyle}
+                style={arrowLeftStyle}
               >
                 &lt;
               </div>
@@ -61,7 +61,7 @@ const App = () => {
               <div
                 onClick={clickHandler}
                 className="custom-arrow custom-arrow-right"
-                style={arrowStyle}
+                style={arrowRightStyle}
               >
                 &gt;
               </div>
@@ -165,6 +165,18 @@ const arrowStyle = {
   position: "absolute", // Absolute positioning
   top: "50%", // Vertically center
   transform: "translateY(-50%)", // Center by adjusting top to 50% and translating up by half of its own height
+};
+
+// Custom Left Arrow Positioning
+const arrowLeftStyle = {
+  ...arrowStyle,
+  left: "0", // Left side of the image
+};
+
+// Custom Right Arrow Positioning
+const arrowRightStyle = {
+  ...arrowStyle,
+  right: "0", // Right side of the image
 };
 
 // Motion settings for scroll fade-in effect
