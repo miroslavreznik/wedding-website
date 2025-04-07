@@ -100,9 +100,9 @@ const App = () => {
         style={{ width: "100%", marginTop: "40px" }}
       />
 
-      <footer style={{ textAlign: "center", padding: "20px" }}>
-        <p>Tááákhle moc se na Vás těšíme! ❤️</p>
-      </footer>
+  <footer style={{ textAlign: "center", padding: "20px" }}>
+    <p style={{ fontSize: "50px", fontWeight: "bold" }}>Tááákhle moc se na Vás těšíme! ❤️</p>
+  </footer>
     </div>
   );
 };
@@ -162,6 +162,20 @@ const buttonStyle = {
   border: "none",
   borderRadius: "5px",
   cursor: "pointer"
+};
+
+// Custom styles for carousel arrows
+const carouselArrowStyle = {
+  position: "absolute",
+  top: "50%",
+  transform: "translateY(-50%)",
+  backgroundColor: colors.primary,
+  border: "none",
+  padding: "10px",
+  borderRadius: "50%",
+  cursor: "pointer",
+  color: "white",
+  zIndex: "1"
 };
 
 export default App;
