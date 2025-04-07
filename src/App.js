@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Carousel } from "react-responsive-carousel";
+import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const colors = {
@@ -8,7 +8,7 @@ const colors = {
   primary: "#673535",
   secondary: "#3e161b",
   accent: "#7d7c6d",
-  text: "#865151",
+  text: "#865151"
 };
 
 const App = () => {
@@ -31,91 +31,38 @@ const App = () => {
         transition={{ duration: 0.6 }}
       >
         <h1>Zveme Vás na Naší svatbu!</h1>
-        <p>
-          Po dlouhém zkušebním provozu to chceme posunout na další level a
-          oslavit tuto příležitost právě s Vámi! Potkali jsme se s Klárkou
-          23.08.2017 a je na čase se vzít! blabla
-        </p>
+        <p>Po dlouhém zkušebním provozu to chceme posunout na další level a oslavit tuto příležitost právě s Vámi! Potkali jsme se s Klárkou 23.08.2017 a je na čase se vzít! blabla </p>
       </motion.header>
 
       {/* Sliding sections */}
       <motion.section style={sectionStyle} {...scrollFade}>
         <h2>Kdy a kde</h2>
-        <p>
-          <strong>Datum:</strong> 20.9.2025
-        </p>
-        <p>
-          <strong>Místo:</strong> Penzion Na Lukách, Široký důl
-        </p>
-        <p>
-          <strong>Začátek:</strong> 10:00
-        </p>
+        <p><strong>Datum:</strong> 20.9.2025</p>
+        <p><strong>Místo:</strong> Penzion Na Lukách, Široký důl</p>
+        <p><strong>Začátek:</strong> 10:00</p>
       </motion.section>
 
       {/* Gallery */}
       <motion.section style={sectionStyle} {...scrollFade}>
-        <Carousel
-          showThumbs={false}
-          infiniteLoop
-          autoPlay
-          transitionTime={800}
-          swipeable
-          emulateTouch
-          className="custom-carousel"
-        >
-          <div>
-            <img
-              src={`${process.env.PUBLIC_URL}/gallery1.jpg`}
-              alt="Gallery 1"
-              style={galleryImageStyle}
-            />
-          </div>
-          <div>
-            <img
-              src={`${process.env.PUBLIC_URL}/gallery2.jpg`}
-              alt="Gallery 2"
-              style={galleryImageStyle}
-            />
-          </div>
-          <div>
-            <img
-              src={`${process.env.PUBLIC_URL}/gallery3.jpg`}
-              alt="Gallery 3"
-              style={galleryImageStyle}
-            />
-          </div>
-          <div>
-            <img
-              src={`${process.env.PUBLIC_URL}/gallery4.jpg`}
-              alt="Gallery 4"
-              style={galleryImageStyle}
-            />
-          </div>
+        <Carousel showThumbs={false} infiniteLoop autoPlay className="custom-carousel">
+          {['gallery1.jpg', 'gallery2.jpg', 'gallery3.jpg', 'gallery4.jpg'].map((img, index) => (
+            <div key={index} style={carouselItemStyle}>
+              <img
+                src={`${process.env.PUBLIC_URL}/${img}`}
+                alt={`Gallery ${index + 1}`}
+                style={galleryImageStyle}
+              />
+            </div>
+          ))}
         </Carousel>
       </motion.section>
 
       {/* RSVP */}
       <motion.section style={sectionStyle} {...scrollFade}>
         <h2>Dondeš? A řekneš nám víc?</h2>
-        <form
-          action="https://formspree.io/f/mpwpjeoe"
-          method="POST"
-          style={formStyle}
-        >
-          <input
-            type="text"
-            name="name"
-            placeholder="Tvoje jméno"
-            required
-            style={inputStyle}
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            required
-            style={inputStyle}
-          />
+        <form action="https://formspree.io/f/mpwpjeoe" method="POST" style={formStyle}>
+          <input type="text" name="name" placeholder="Tvoje jméno" required style={inputStyle} />
+          <input type="email" name="email" placeholder="Email" required style={inputStyle} />
           <select name="attendance" style={inputStyle}>
             <option value="yes">Ano</option>
             <option value="no">Ne</option>
@@ -125,9 +72,7 @@ const App = () => {
             <option value="chicken">Rolované kuře s bramborovou kaší</option>
             <option value="sirloin">Vepřová panenka a bramborové pyré</option>
           </select>
-          <button type="submit" style={buttonStyle}>
-            Odeslat
-          </button>
+          <button type="submit" style={buttonStyle}>Odeslat</button>
         </form>
       </motion.section>
 
@@ -153,48 +98,39 @@ const sectionStyle = {
   borderRadius: "10px",
   width: "90%",
   maxWidth: "800px",
-  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
+  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)"
 };
 
-// Styles for the gallery image
+const carouselItemStyle = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  height: "500px",
+  overflow: "hidden"
+};
+
 const galleryImageStyle = {
-  maxHeight: "500px",
+  maxHeight: "100%",
   maxWidth: "100%",
-  width: "auto",
   height: "auto",
+  width: "auto",
   objectFit: "contain",
   borderRadius: "10px",
-  display: "block",
-  margin: "0 auto",
+  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)"
 };
 
-// Custom CSS overrides for Carousel arrows
-const carouselStyles = `
-  .custom-carousel .control-arrow {
-    width: 60px !important;
-    background: transparent !important;
-  }
-
-  .custom-carousel .control-prev.control-arrow::before,
-  .custom-carousel .control-next.control-arrow::before {
-    font-size: 30px;
-  }
-`;
-
-// Motion settings for scroll fade-in effect
 const scrollFade = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.6 },
+  transition: { duration: 0.6 }
 };
 
-// Form and button styling
 const formStyle = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  gap: "10px",
+  gap: "10px"
 };
 
 const inputStyle = {
@@ -202,7 +138,7 @@ const inputStyle = {
   width: "80%",
   maxWidth: "300px",
   borderRadius: "5px",
-  border: "1px solid #ccc",
+  border: "1px solid #ccc"
 };
 
 const buttonStyle = {
@@ -211,7 +147,24 @@ const buttonStyle = {
   padding: "10px",
   border: "none",
   borderRadius: "5px",
-  cursor: "pointer",
+  cursor: "pointer"
 };
+
+const carouselStyles = `
+  .custom-carousel .control-arrow {
+    width: 60px !important;
+    background: transparent !important;
+    color: #673535 !important;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+  .custom-carousel .control-arrow:hover {
+    opacity: 1;
+  }
+  .custom-carousel .control-prev.control-arrow::before,
+  .custom-carousel .control-next.control-arrow::before {
+    font-size: 30px;
+  }
+`;
 
 export default App;
