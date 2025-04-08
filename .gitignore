@@ -1,0 +1,13 @@
+# Node.js dependencies
+node_modules/
+
+# Build output
+build/
+dist/
+
+# Logs
+*.log
+
+# Optional, add any IDE-specific files to ignore as well (e.g., VSCode, IntelliJ)
+.vscode/
+.idea/
