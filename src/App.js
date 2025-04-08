@@ -79,6 +79,18 @@ const App = () => {
           <div>
             <GalleryImage src={`${process.env.PUBLIC_URL}/gallery4.jpg`} alt="Gallery 4" />
           </div>
+          <div>
+            <GalleryImage src={`${process.env.PUBLIC_URL}/gallery5.jpg`} alt="Gallery 5" />
+          </div>
+          <div>
+            <GalleryImage src={`${process.env.PUBLIC_URL}/gallery6.jpg`} alt="Gallery 6" />
+          </div>
+          <div>
+            <GalleryImage src={`${process.env.PUBLIC_URL}/gallery7.jpg`} alt="Gallery 7" />
+          </div>
+          <div>
+            <GalleryImage src={`${process.env.PUBLIC_URL}/gallery8.jpg`} alt="Gallery 8" />
+          </div>
         </Carousel>
       </GallerySection>
 
