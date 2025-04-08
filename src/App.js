@@ -12,6 +12,22 @@ const colors = {
   text: "#865151",
 };
 
+const WeddingMap = () => (
+  <MapContainer>
+    {/* Embed the Google Map iframe */}
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2578.0054414662613!2d16.2279113!3d49.7483414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470d910737ce53f7%3A0xd9f9af9b29d815f2!2sPenzion%20Na%20Luk%C3%A1ch!5e0!3m2!1sen!2scz!4v1744119883595!5m2!1sen!2scz"
+      width="100%"
+      height="400"
+      frameBorder="0"
+      style={{ border: 0 }}
+      allowFullScreen=""
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </MapContainer>
+);
+
 const App = () => {
   return (
     <Wrapper>
@@ -38,31 +54,6 @@ const App = () => {
         <p>
           <strong>Začátek:</strong> 10:00
         </p>
-      </Section>
-
-      {/* New Program Section */}
-      <Section>
-        <motion.h2 {...scrollFade}>Program</motion.h2>
-        <ul>
-          <li>
-            <strong>10:00</strong> – Přivítání hostů a úvodní slovo
-          </li>
-          <li>
-            <strong>11:00</strong> – Svatba a obřad
-          </li>
-          <li>
-            <strong>12:00</strong> – Svatební oběd
-          </li>
-          <li>
-            <strong>14:00</strong> – Taneční zábava a program
-          </li>
-          <li>
-            <strong>17:00</strong> – Krájení svatebního dortu a přípitek
-          </li>
-          <li>
-            <strong>20:00</strong> – Večerní párty
-          </li>
-        </ul>
       </Section>
 
       <GallerySection>
@@ -112,13 +103,16 @@ const App = () => {
         </RSVPForm>
       </RSVPSection>
 
-      {/* New Podrobnosti Section */}
+      {/* Add the Wedding Map in the Podrobnosti section */}
       <Section>
         <motion.h2 {...scrollFade}>Podrobnosti</motion.h2>
         <p>Barvy naší svatby:</p>
         <ImageContainer>
           <img src={`${process.env.PUBLIC_URL}/colours.png`} alt="Svatba Colours" style={{ width: "10%", borderRadius: "10px" }} />
         </ImageContainer>
+        
+        {/* Insert the Map here */}
+        <WeddingMap />
       </Section>
 
       <FooterImage src={`${process.env.PUBLIC_URL}/footer.jpg`} alt="Wedding Footer" />
@@ -130,6 +124,7 @@ const App = () => {
   );
 };
 
+// Styled Components
 const Wrapper = styled.div`
   background-color: ${colors.background};
   color: ${colors.text};
@@ -232,5 +227,12 @@ const scrollFade = {
   viewport: { once: true },
   transition: { duration: 0.6 },
 };
+
+// Map styling
+const MapContainer = styled.div`
+  width: 100%;
+  height: 400px;
+  margin: 20px 0;
+`;
 
 export default App;
