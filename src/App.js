@@ -8,9 +8,9 @@ import { FaChevronDown } from "react-icons/fa";
 const colors = {
   background: "#d9b9b0",
   primary: "#673535",
-  secondary: "#3e161b",
+  secondary: "#865151",
   accent: "#7d7c6d",
-  text: "#865151",
+  text: "#3e161b1",
 };
 
 const WeddingMap = () => (
@@ -202,11 +202,11 @@ const Header = styled.header`
 `;
 
 const Section = styled.section`
-  background: white;
+  background: transparent;
   padding: 20px;
   width: 80%;
   margin: 20px auto;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
   border-radius: 10px;
 `;
 
@@ -215,13 +215,13 @@ const GallerySection = styled(Section)`
 `;
 
 const GalleryImage = styled.img`
-  max-height: 500px;
+  max-height: 600px;
   width: auto;
   height: auto;
   max-width: 100%;
   object-fit: contain;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
   display: block;
   margin: 0 auto;
 `;
