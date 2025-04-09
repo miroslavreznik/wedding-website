@@ -176,11 +176,10 @@ const Header = styled.header`
 const Section = styled.section`
   background: white;
   padding: 20px;
-  margin: 20px auto;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 800px;
+  width: 80%; /* Stretch the section to take 80% of the available width */
+  margin: 20px auto; /* Keep it centered with space around */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 `;
 
 const GallerySection = styled(Section)`
