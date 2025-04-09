@@ -8,8 +8,8 @@ import { FaChevronDown } from "react-icons/fa";
 const colors = {
   background: "#d9b9b0",
   primary: "#673535",
-  secondary: "#865151",
-  accent: "#7d7c6d",
+  secondary: "#7d7c6d",
+  accent: "#865151",
   text: "#3e161b",
 };
 
@@ -17,7 +17,7 @@ const ElegantIntro = styled.section`
   color: ${colors.text};
   font-family: 'Playfair Display', serif;
   text-align: center;
-  padding: 40px 20px;
+  padding: 20px 20px 0px;
   font-size: 20px;
   line-height: 1.6;
   width: 80%;
