@@ -196,7 +196,7 @@ const App = () => {
 const Wrapper = styled.div`
   background-color: ${colors.background};
   color: ${colors.text};
-  font-family: Arial, sans-serif;
+  font-family: 'Playfair Display', serif;
 `;
 
 const HeroImage = styled.img`
@@ -259,7 +259,7 @@ const Select = styled.select`
 `;
 
 const Button = styled.button`
-  background-color: ${colors.primary};
+  background-color: ${colors.accent};
   color: white;
   padding: 10px;
   border: none;
@@ -313,11 +313,11 @@ const MapContainer = styled.div`
 `;
 
 const AccordionWrapper = styled.div`
-  background: white;
+  background: ${colors.background};
   width: 80%;
   margin: 20px auto;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
 `;
 
 const AccordionHeader = styled.div`
