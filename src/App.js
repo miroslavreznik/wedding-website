@@ -1,8 +1,9 @@
+
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { FaChevronDown } from "react-icons/fa";
 
 const colors = {
@@ -12,6 +13,18 @@ const colors = {
   accent: "#865151",
   text: "#3e161b",
 };
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: ${colors.background};
+  }
+`;
 
 const ElegantIntro = styled.section`
   color: ${colors.text};
@@ -69,126 +82,127 @@ const App = () => {
   };
 
   return (
-    <Wrapper>
-      <HeroImage src={`${process.env.PUBLIC_URL}/hero.jpg`} alt="Wedding Hero" />
+    <>
+      <GlobalStyle />
+      <Wrapper>
+        <HeroImage src={`${process.env.PUBLIC_URL}/hero.jpg`} alt="Wedding Hero" />
 
-      <ElegantIntro>
-  <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-    Zveme Vás na Naší svatbu!
-  </motion.h1>
-  <p>
-    Po dlouhém zkušebním provozu to chceme posunout na další level a oslavit tuto příležitost právě s Vámi!
-    Potkali jsme se s Klárkou 23.08.2017 a je na čase se vzít! blabla
-  </p>
-  <p>
-    <strong>Datum:</strong> 20.9.2025
-  </p>
-  <p>
-    <strong>Místo:</strong> Penzion Na Lukách, Široký důl
-  </p>
-  <p>
-    <strong>Začátek:</strong> 10:00
-  </p>
-</ElegantIntro>
+        <ElegantIntro>
+          <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            Zveme Vás na Naší svatbu!
+          </motion.h1>
+          <p>
+            Po dlouhém zkušebním provozu to chceme posunout na další level a oslavit tuto příležitost právě s Vámi!
+            Potkali jsme se s Klárkou 23.08.2017 a je na čase se vzít! blabla
+          </p>
+          <p>
+            <strong>Datum:</strong> 20.9.2025
+          </p>
+          <p>
+            <strong>Místo:</strong> Penzion Na Lukách, Široký důl
+          </p>
+          <p>
+            <strong>Začátek:</strong> 10:00
+          </p>
+        </ElegantIntro>
 
-     
+        <GallerySection>
+          <Carousel showThumbs={false} infiniteLoop autoPlay>
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+              <div key={i}>
+                <GalleryImage src={`${process.env.PUBLIC_URL}/gallery${i}.jpg`} alt={`Gallery ${i}`} />
+              </div>
+            ))}
+          </Carousel>
+        </GallerySection>
 
-      <GallerySection>
-        <Carousel showThumbs={false} infiniteLoop autoPlay>
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-            <div key={i}>
-              <GalleryImage src={`${process.env.PUBLIC_URL}/gallery${i}.jpg`} alt={`Gallery ${i}`} />
-            </div>
-          ))}
-        </Carousel>
-      </GallerySection>
+        <Accordion
+          title="Program"
+          isOpen={openAccordion === "program"}
+          onClick={() => toggleAccordion("program")}
+        >
+          <ul>
+            <li>
+              <strong>10:00 - 11:00:</strong> Svatba (Obřad)
+            </li>
+            <li>
+              <strong>11:00 - 12:00:</strong> Přípitek a fotografie
+            </li>
+            <li>
+              <strong>12:00 - 14:00:</strong> Oběd
+            </li>
+            <li>
+              <strong>14:00 - 16:00:</strong> Taneční zábava
+            </li>
+            <li>
+              <strong>16:00 - 18:00:</strong> Zábavný program (hry a soutěže)
+            </li>
+            <li>
+              <strong>18:00 - 20:00:</strong> Večeře
+            </li>
+            <li>
+              <strong>20:00 - 00:00:</strong> Taneční večer s DJ
+            </li>
+          </ul>
+        </Accordion>
 
-      <Accordion
-        title="Program"
-        isOpen={openAccordion === "program"}
-        onClick={() => toggleAccordion("program")}
-      >
-        <ul>
-          <li>
-            <strong>10:00 - 11:00:</strong> Svatba (Obřad)
-          </li>
-          <li>
-            <strong>11:00 - 12:00:</strong> Přípitek a fotografie
-          </li>
-          <li>
-            <strong>12:00 - 14:00:</strong> Oběd
-          </li>
-          <li>
-            <strong>14:00 - 16:00:</strong> Taneční zábava
-          </li>
-          <li>
-            <strong>16:00 - 18:00:</strong> Zábavný program (hry a soutěže)
-          </li>
-          <li>
-            <strong>18:00 - 20:00:</strong> Večeře
-          </li>
-          <li>
-            <strong>20:00 - 00:00:</strong> Taneční večer s DJ
-          </li>
-        </ul>
-      </Accordion>
+        <Accordion
+          title="Dondeš? A řekneš nám víc?"
+          isOpen={openAccordion === "rsvp"}
+          onClick={() => toggleAccordion("rsvp")}
+        >
+          {!isAuthorized ? (
+            <>
+              <p>Prosím zadej heslo pro zobrazení formuláře:</p>
+              <PasswordInput
+                type="password"
+                placeholder="Zadej heslo"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Button onClick={handlePasswordSubmit}>Potvrdit</Button>
+              {showError && <ErrorText>Špatné heslo, zkus to znovu.</ErrorText>}
+            </>
+          ) : (
+            <RSVPForm action="https://formspree.io/f/mpwpjeoe" method="POST">
+              <Input type="text" name="name" placeholder="Tvoje jméno" required />
+              <Input type="email" name="email" placeholder="Email" required />
+              <Select name="attendance">
+                <option value="yes">Ano</option>
+                <option value="no">Ne</option>
+              </Select>
+              <Select name="meal">
+                <option value="svickova">Svíčková na smetaně</option>
+                <option value="chicken">Rolované kuře s bramborovou kaší</option>
+                <option value="sirloin">Vepřová panenka a bramborové pyré</option>
+              </Select>
+              <Button type="submit">Odeslat</Button>
+            </RSVPForm>
+          )}
+        </Accordion>
 
-      <Accordion
-        title="Dondeš? A řekneš nám víc?"
-        isOpen={openAccordion === "rsvp"}
-        onClick={() => toggleAccordion("rsvp")}
-      >
-        {!isAuthorized ? (
-          <>
-            <p>Prosím zadej heslo pro zobrazení formuláře:</p>
-            <PasswordInput
-              type="password"
-              placeholder="Zadej heslo"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+        <Accordion
+          title="Časté dotazy"
+          isOpen={openAccordion === "faq"}
+          onClick={() => toggleAccordion("faq")}
+        >
+          <p>Barvy naší svatby:</p>
+          <ImageContainer>
+            <img
+              src={`${process.env.PUBLIC_URL}/colours.png`}
+              alt="Svatba Colours"
+              style={{ width: "10%", borderRadius: "10px" }}
             />
-            <Button onClick={handlePasswordSubmit}>Potvrdit</Button>
-            {showError && <ErrorText>Špatné heslo, zkus to znovu.</ErrorText>}
-          </>
-        ) : (
-          <RSVPForm action="https://formspree.io/f/mpwpjeoe" method="POST">
-            <Input type="text" name="name" placeholder="Tvoje jméno" required />
-            <Input type="email" name="email" placeholder="Email" required />
-            <Select name="attendance">
-              <option value="yes">Ano</option>
-              <option value="no">Ne</option>
-            </Select>
-            <Select name="meal">
-              <option value="svickova">Svíčková na smetaně</option>
-              <option value="chicken">Rolované kuře s bramborovou kaší</option>
-              <option value="sirloin">Vepřová panenka a bramborové pyré</option>
-            </Select>
-            <Button type="submit">Odeslat</Button>
-          </RSVPForm>
-        )}
-      </Accordion>
+          </ImageContainer>
+          <WeddingMap />
+        </Accordion>
 
-      <Accordion
-        title="Časté dotazy"
-        isOpen={openAccordion === "faq"}
-        onClick={() => toggleAccordion("faq")}
-      >
-        <p>Barvy naší svatby:</p>
-        <ImageContainer>
-          <img
-            src={`${process.env.PUBLIC_URL}/colours.png`}
-            alt="Svatba Colours"
-            style={{ width: "10%", borderRadius: "10px" }}
-          />
-        </ImageContainer>
-        <WeddingMap />
-      </Accordion>
-
-      <FooterImage src={`${process.env.PUBLIC_URL}/footer.jpg`} alt="Wedding Footer" />
-      <Footer>
-        <p>Tááákhle moc se na Vás těšíme! ❤️</p>
-      </Footer>
-    </Wrapper>
+        <FooterImage src={`${process.env.PUBLIC_URL}/footer.jpg`} alt="Wedding Footer" />
+        <Footer>
+          <p>Tááákhle moc se na Vás těšíme! ❤️</p>
+        </Footer>
+      </Wrapper>
+    </>
   );
 };
 
