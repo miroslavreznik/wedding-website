@@ -78,6 +78,33 @@ const App = () => {
         </Carousel>
       </GallerySection>
 
+      <Section>
+        <motion.h2 {...scrollFade}>Program</motion.h2>
+        <ul>
+          <li>
+            <strong>10:00 - 11:00:</strong> Svatba (Obřad)
+          </li>
+          <li>
+            <strong>11:00 - 12:00:</strong> Přípitek a fotografie
+          </li>
+          <li>
+            <strong>12:00 - 14:00:</strong> Oběd
+          </li>
+          <li>
+            <strong>14:00 - 16:00:</strong> Taneční zábava
+          </li>
+          <li>
+            <strong>16:00 - 18:00:</strong> Zábavný program (hry a soutěže)
+          </li>
+          <li>
+            <strong>18:00 - 20:00:</strong> Večeře
+          </li>
+          <li>
+            <strong>20:00 - 00:00:</strong> Taneční večer s DJ
+          </li>
+        </ul>
+      </Section>
+      
       <RSVPSection>
         <motion.h2 {...scrollFade}>Dondeš? A řekneš nám víc?</motion.h2>
 
