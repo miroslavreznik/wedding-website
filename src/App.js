@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import styled from "styled-components";
+import { FaChevronDown } from "react-icons/fa";
 
 const colors = {
   background: "#d9b9b0",
@@ -27,10 +28,21 @@ const WeddingMap = () => (
   </MapContainer>
 );
 
+const Accordion = ({ title, isOpen, onClick, children }) => (
+  <AccordionWrapper>
+    <AccordionHeader onClick={onClick}>
+      <span>{title}</span>
+      <ChevronIcon isOpen={isOpen} />
+    </AccordionHeader>
+    <AccordionContent isOpen={isOpen}>{children}</AccordionContent>
+  </AccordionWrapper>
+);
+
 const App = () => {
   const [password, setPassword] = useState("");
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [showError, setShowError] = useState(false);
+  const [openAccordion, setOpenAccordion] = useState(null);
 
   const handlePasswordSubmit = () => {
     if (password === "Mirara") {
@@ -39,6 +51,10 @@ const App = () => {
     } else {
       setShowError(true);
     }
+  };
+
+  const toggleAccordion = (key) => {
+    setOpenAccordion(openAccordion === key ? null : key);
   };
 
   return (
@@ -50,8 +66,8 @@ const App = () => {
           Zveme Vás na Naší svatbu!
         </motion.h1>
         <p>
-          Po dlouhém zkušebním provozu to chceme posunout na další level a oslavit tuto příležitost právě s Vámi! Potkali
-          jsme se s Klárkou 23.08.2017 a je na čase se vzít! blabla
+          Po dlouhém zkušebním provozu to chceme posunout na další level a oslavit tuto příležitost právě s Vámi!
+          Potkali jsme se s Klárkou 23.08.2017 a je na čase se vzít! blabla
         </p>
       </Header>
 
@@ -70,7 +86,7 @@ const App = () => {
 
       <GallerySection>
         <Carousel showThumbs={false} infiniteLoop autoPlay>
-          {[1, 2, 3, 4, 5, 6, 7, 8].map(i => (
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
             <div key={i}>
               <GalleryImage src={`${process.env.PUBLIC_URL}/gallery${i}.jpg`} alt={`Gallery ${i}`} />
             </div>
@@ -78,8 +94,11 @@ const App = () => {
         </Carousel>
       </GallerySection>
 
-      <Section>
-        <motion.h2 {...scrollFade}>Program</motion.h2>
+      <Accordion
+        title="Program"
+        isOpen={openAccordion === "program"}
+        onClick={() => toggleAccordion("program")}
+      >
         <ul>
           <li>
             <strong>10:00 - 11:00:</strong> Svatba (Obřad)
@@ -103,11 +122,13 @@ const App = () => {
             <strong>20:00 - 00:00:</strong> Taneční večer s DJ
           </li>
         </ul>
-      </Section>
-      
-      <RSVPSection>
-        <motion.h2 {...scrollFade}>Dondeš? A řekneš nám víc?</motion.h2>
+      </Accordion>
 
+      <Accordion
+        title="Dondeš? A řekneš nám víc?"
+        isOpen={openAccordion === "rsvp"}
+        onClick={() => toggleAccordion("rsvp")}
+      >
         {!isAuthorized ? (
           <>
             <p>Prosím zadej heslo pro zobrazení formuláře:</p>
@@ -136,16 +157,23 @@ const App = () => {
             <Button type="submit">Odeslat</Button>
           </RSVPForm>
         )}
-      </RSVPSection>
+      </Accordion>
 
-      <Section>
-        <motion.h2 {...scrollFade}>Časté dotazy</motion.h2>
+      <Accordion
+        title="Časté dotazy"
+        isOpen={openAccordion === "faq"}
+        onClick={() => toggleAccordion("faq")}
+      >
         <p>Barvy naší svatby:</p>
         <ImageContainer>
-          <img src={`${process.env.PUBLIC_URL}/colours.png`} alt="Svatba Colours" style={{ width: "10%", borderRadius: "10px" }} />
+          <img
+            src={`${process.env.PUBLIC_URL}/colours.png`}
+            alt="Svatba Colours"
+            style={{ width: "10%", borderRadius: "10px" }}
+          />
         </ImageContainer>
         <WeddingMap />
-      </Section>
+      </Accordion>
 
       <FooterImage src={`${process.env.PUBLIC_URL}/footer.jpg`} alt="Wedding Footer" />
       <Footer>
@@ -176,8 +204,8 @@ const Header = styled.header`
 const Section = styled.section`
   background: white;
   padding: 20px;
-  width: 80%; /* Stretch the section to take 80% of the available width */
-  margin: 20px auto; /* Keep it centered with space around */
+  width: 80%;
+  margin: 20px auto;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 `;
@@ -197,8 +225,6 @@ const GalleryImage = styled.img`
   display: block;
   margin: 0 auto;
 `;
-
-const RSVPSection = styled(Section)``;
 
 const RSVPForm = styled.form`
   display: flex;
@@ -275,6 +301,40 @@ const MapContainer = styled.div`
   width: 100%;
   height: 400px;
   margin: 20px 0;
+`;
+
+const AccordionWrapper = styled.div`
+  background: white;
+  width: 80%;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+`;
+
+const AccordionHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  background: ${colors.accent};
+  color: white;
+  border-radius: 10px 10px 0 0;
+`;
+
+const AccordionContent = styled(motion.div).attrs(({ isOpen }) => ({
+  initial: { height: 0, opacity: 0 },
+  animate: isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 },
+  transition: { duration: 0.4 },
+}))`
+  overflow: hidden;
+  padding: ${({ isOpen }) => (isOpen ? "20px" : "0 20px")};
+`;
+
+const ChevronIcon = styled(FaChevronDown)`
+  transition: transform 0.3s ease;
+  transform: ${({ isOpen }) => (isOpen ? "rotate(180deg)" : "rotate(0deg)")};
 `;
 
 export default App;
