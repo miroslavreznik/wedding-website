@@ -10,8 +10,19 @@ const colors = {
   primary: "#673535",
   secondary: "#865151",
   accent: "#7d7c6d",
-  text: "#3e161b1",
+  text: "#3e161b",
 };
+
+const ElegantIntro = styled.section`
+  color: ${colors.text};
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 20px;
+  line-height: 1.6;
+  width: 80%;
+  margin: 0 auto;
+`;
 
 const WeddingMap = () => (
   <MapContainer>
@@ -61,28 +72,26 @@ const App = () => {
     <Wrapper>
       <HeroImage src={`${process.env.PUBLIC_URL}/hero.jpg`} alt="Wedding Hero" />
 
-      <Header>
-        <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          Zveme Vás na Naší svatbu!
-        </motion.h1>
-        <p>
-          Po dlouhém zkušebním provozu to chceme posunout na další level a oslavit tuto příležitost právě s Vámi!
-          Potkali jsme se s Klárkou 23.08.2017 a je na čase se vzít! blabla
-        </p>
-      </Header>
+      <ElegantIntro>
+  <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+    Zveme Vás na Naší svatbu!
+  </motion.h1>
+  <p>
+    Po dlouhém zkušebním provozu to chceme posunout na další level a oslavit tuto příležitost právě s Vámi!
+    Potkali jsme se s Klárkou 23.08.2017 a je na čase se vzít! blabla
+  </p>
+  <p>
+    <strong>Datum:</strong> 20.9.2025
+  </p>
+  <p>
+    <strong>Místo:</strong> Penzion Na Lukách, Široký důl
+  </p>
+  <p>
+    <strong>Začátek:</strong> 10:00
+  </p>
+</ElegantIntro>
 
-      <Section>
-        <motion.h2 {...scrollFade}>Kdy a kde</motion.h2>
-        <p>
-          <strong>Datum:</strong> 20.9.2025
-        </p>
-        <p>
-          <strong>Místo:</strong> Penzion Na Lukách, Široký důl
-        </p>
-        <p>
-          <strong>Začátek:</strong> 10:00
-        </p>
-      </Section>
+     
 
       <GallerySection>
         <Carousel showThumbs={false} infiniteLoop autoPlay>
