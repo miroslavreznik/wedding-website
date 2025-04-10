@@ -2,7 +2,7 @@
   "name": "wedding-website",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://miroslavreznik.github.io/wedding-website",
+  "homepage": "https://klarkaamira.cz",
   "dependencies": {
     "framer-motion": "^10.16.3",
     "react": "^18.2.0",
