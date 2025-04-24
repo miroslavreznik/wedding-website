@@ -123,25 +123,28 @@ const App = () => {
         >
           <ul>
             <li>
-              <strong>10:00 - 11:00:</strong> Svatba (Obřad)
+              <strong>10:00</strong> Scuk v penzionu
             </li>
             <li>
-              <strong>11:00 - 12:00:</strong> Přípitek a fotografie
+              <strong>11:00</strong> Obřad a focení
             </li>
             <li>
-              <strong>12:00 - 14:00:</strong> Oběd
+              <strong>12:00 </strong> Obídek
             </li>
             <li>
-              <strong>14:00 - 16:00:</strong> Taneční zábava
+              <strong>14:00</strong> Odpolední kafíčko a zábava (trápení novomanželů)
             </li>
             <li>
-              <strong>16:00 - 18:00:</strong> Zábavný program (hry a soutěže)
+              <strong>16:00</strong> Zábavný program (trápení svatebčanů)
             </li>
             <li>
-              <strong>18:00 - 20:00:</strong> Večeře
+              <strong>18:00 </strong> Čuník&Chill
             </li>
             <li>
-              <strong>20:00 - 00:00:</strong> Taneční večer s DJ
+              <strong>20:00</strong> Pokus o tanec 
+            </li>
+            <li>
+              <strong>00:00</strong> Rave 
             </li>
           </ul>
         </Accordion>
@@ -186,7 +189,7 @@ const App = () => {
           isOpen={openAccordion === "faq"}
           onClick={() => toggleAccordion("faq")}
         >
-          <p>Barvy naší svatby:</p>
+          <p>Níže jsou barvy naší svatby, budeme rádi, když si do nich sladíte šaty nebo doplňky, ale není to nutnost.</p>
           <ImageContainer>
             <img
               src={`${process.env.PUBLIC_URL}/colours.png`}
@@ -194,6 +197,9 @@ const App = () => {
               style={{ width: "10%", borderRadius: "10px" }}
             />
           </ImageContainer>
+          <p>Zda s sebou vezmete děti nebo to rozjedete solo necháme na Vás! (nebo Vašich dětech)</p>
+          <p>Samotná Vaše přítomnost bude pro nás darem, ale oceníme finanční dary. (talíře už máme)</p>
+          <p>Pro hosty z Jížních Čech bude na místě připraveno ubytování. Pro lokální bude zařízen svoz a rozvoz. Pro dobrodruhy se volná postel (nebo podlaha) vždy najde nebo si může venku postavit stan.</p>
           <WeddingMap />
         </Accordion>
 
