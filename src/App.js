@@ -93,7 +93,7 @@ const App = () => {
           </motion.h1>
           <p>
             Po dlouhém zkušebním provozu to chceme posunout na další level a oslavit tuto příležitost právě s Vámi!
-            Potkali jsme se s Klárkou 23.08.2017 a je na čase se vzít! blabla
+            Zde najdete všechny základní informace a také vyplníte formulář, ať víme, že s Vámi máme počítat!
           </p>
           <p>
             <strong>Datum:</strong> 20.9.2025
