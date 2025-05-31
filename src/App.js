@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Carousel } from "react-responsive-carousel";
@@ -28,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
 
 const ElegantIntro = styled.section`
   color: ${colors.text};
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   text-align: center;
   padding: 20px 20px 0px;
   font-size: 20px;
@@ -85,16 +84,40 @@ const App = () => {
     <>
       <GlobalStyle />
       <Wrapper>
-        <HeroImage src={`${process.env.PUBLIC_URL}/hero.jpg`} alt="Wedding Hero" />
+        <HeroImage
+          src={`${process.env.PUBLIC_URL}/hero.webp`}
+          alt="Wedding Hero"
+        />
 
         <ElegantIntro>
-          <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <motion.h1
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             Zveme Vás na Naší svatbu!
           </motion.h1>
           <p>
-            Po dlouhém zkušebním provozu to chceme posunout na další level a oslavit tuto příležitost právě s Vámi!
-            Zde najdete všechny základní informace a také vyplníte formulář, ať víme, že s Vámi máme počítat!
+            Po dlouhém zkušebním provozu to chceme posunout na další level a
+            oslavit tuto příležitost právě s Vámi!
           </p>
+          <p>
+            Velmi nás těší, že s námi budete sdílet náš výjimečný den. Prosíme
+            vás, abyste potvrdili svoji účast pomocí tohoto{" "}
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdeJ2ZcI_ykvSccbf4S0otzQquOsYUI3PxMpSpfzUIYLkvVIA/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              formuláře
+            </a>
+            .
+          </p>
+          <p>
+            Formulář vyplňte prosím za každou osobu, která se zúčastní, i za ty
+            nejmenší svatebčánky.
+          </p>
+          <p>Děkujeme!</p>
           <p>
             <strong>Datum:</strong> 20.9.2025
           </p>
@@ -110,100 +133,208 @@ const App = () => {
           <Carousel showThumbs={false} infiniteLoop autoPlay>
             {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
               <div key={i}>
-                <GalleryImage src={`${process.env.PUBLIC_URL}/gallery${i}.jpg`} alt={`Gallery ${i}`} />
+                <GalleryImage
+                  src={`${process.env.PUBLIC_URL}/gallery${i}.jpg`}
+                  alt={`Gallery ${i}`}
+                />
               </div>
             ))}
           </Carousel>
         </GallerySection>
 
         <Accordion
-          title="Program"
-          isOpen={openAccordion === "program"}
-          onClick={() => toggleAccordion("program")}
+          title="🕒 Harmonogram dne"
+          isOpen={openAccordion === "🕒 Harmonogram dne"}
+          onClick={() => toggleAccordion("🕒 Harmonogram dne")}
         >
+          <h3>Sobota</h3>
           <ul>
             <li>
-              <strong>10:00</strong> Scuk v penzionu
+              <strong>10:00</strong> – Jihočeská slavobrána a ranní mecheche
             </li>
             <li>
-              <strong>11:00</strong> Obřad a focení
+              <strong>11:00</strong> – Obřad
+            </li>
+            <li>Oběd</li>
+            <li>Kafíčko a krájení dortu</li>
+            <li>První tanec</li>
+            <li>Házení kyticí</li>
+            <li>Večerní raut</li>
+            <li>Zábava do rána ✨</li>
+          </ul>
+
+          <h3>Neděle</h3>
+          <ul>
+            <li>
+              <strong>10:00–15:00</strong> – Dojídačka a dopíječka 🍰🍷
+            </li>
+          </ul>
+          <p>
+            Budeme moc rádi, když dorazíte i v neděli — ať už jste přespali,
+            nebo to máte jen pár zatáček. Čeká nás dojídačka, dopíječka a pokec
+            o tom, kdo co (ne)pamatuje a kdo zatančil největší číslo večera.
+            🕺🍰
+          </p>
+        </Accordion>
+
+        <Accordion
+          title="🥂 Jihočeská slavobrána"
+          isOpen={openAccordion === "🥂 Jihočeská slavobrána"}
+          onClick={() => toggleAccordion("🥂 Jihočeská slavobrána")}
+        >
+          <p>
+            U nevěsty doma je tradice, že přátelé postaví slavobránu u jejího
+            domu. Druhý den ráno před obřadem se pak všichni hosté sejdou u
+            nevěstina domu, kde je hudba, pití a zábava. Když se pak jede na
+            obřad, všichni hosté touto branou projdou a musí se „vyplatit“ —
+            tedy každý z hostů přispěje nějakou drobnou částkou, kterou dostanou
+            mladí stavitelé slavobrány. Ti totiž na svatbu nejsou zváni, a tak
+            mají aspoň peníze na pořádnou oslavu.
+          </p>
+
+          <p>
+            V našem případě je ale svatba na jednom místě, všichni jsou zváni,
+            včetně stavitelů slavobrány, a nechceme od vás, hostů, žádné další
+            peníze navíc. Proto jsme si pro vás připravili trochu jinou verzi
+            téhle tradice:
+          </p>
+
+          <ul>
+            <li>
+              Místo peněz budete „vyplácet“ třeba veselou básničkou, písničkou,
+              nebo jen úsměvem a přáním pro ty, kdo bránu stavěli.
             </li>
             <li>
-              <strong>12:00 </strong> Obídek
-            </li>
-            <li>
-              <strong>14:00</strong> Odpolední kafíčko a zábava (trápení novomanželů)
-            </li>
-            <li>
-              <strong>16:00</strong> Zábavný program (trápení svatebčanů)
-            </li>
-            <li>
-              <strong>18:00 </strong> Čuník&Chill
-            </li>
-            <li>
-              <strong>20:00</strong> Pokus o tanec 
-            </li>
-            <li>
-              <strong>00:00</strong> Rave 
+              U slavobrány bude připravený malý přípitek, takže společně
+              připijeme na krásný začátek svatebního dne.
             </li>
           </ul>
         </Accordion>
 
         <Accordion
-          title="Dondeš? A řekneš nám víc?"
-          isOpen={openAccordion === "rsvp"}
-          onClick={() => toggleAccordion("rsvp")}
+          title="🎨 Barvy naší svatby"
+          isOpen={openAccordion === "🎨 Barvy naší svatby"}
+          onClick={() => toggleAccordion("🎨 Barvy naší svatby")}
         >
-          {!isAuthorized ? (
-            <>
-              <p>Prosím zadej heslo pro zobrazení formuláře:</p>
-              <PasswordInput
-                type="password"
-                placeholder="Zadej heslo"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+          Budeme rádi, když se s námi trochu sladíte, ale není to povinné –
+          klidně si vezměte něco, co už máte, hlavně si den užijte! Naše
+          svatební barva je burgundy, a ladíme v celé paletě od hluboké burgundy
+          až po jemnou starorůžovou. Mrkněte na paletu a ukázku šatů, ať máte
+          představu.
+          <div
+            style={{
+              display: "flex",
+              gap: "20px",
+              marginTop: "1rem",
+              alignItems: "center",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                gap: "20px",
+                marginTop: "1rem",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src={`${process.env.PUBLIC_URL}/svatebni barvy + stin.svg`}
+                alt="Ukázka palety barev SVG"
+                style={{ width: "250px", height: "auto" }}
               />
-              <Button onClick={handlePasswordSubmit}>Potvrdit</Button>
-              {showError && <ErrorText>Špatné heslo, zkus to znovu.</ErrorText>}
-            </>
-          ) : (
-            <RSVPForm action="https://formspree.io/f/mpwpjeoe" method="POST">
-              <Input type="text" name="name" placeholder="Tvoje jméno" required />
-              <Input type="email" name="email" placeholder="Email" required />
-              <Select name="attendance">
-                <option value="yes">Ano</option>
-                <option value="no">Ne</option>
-              </Select>
-              <Select name="meal">
-                <option value="svickova">Svíčková na smetaně</option>
-                <option value="chicken">Rolované kuře s bramborovou kaší</option>
-                <option value="sirloin">Vepřová panenka a bramborové pyré</option>
-              </Select>
-              <Button type="submit">Odeslat</Button>
-            </RSVPForm>
-          )}
+              <img
+                src={`${process.env.PUBLIC_URL}/svatebni barvy - saty.png`}
+                alt="Ukázka šatů PNG"
+                style={{ width: "250px", height: "auto" }}
+              />
+            </div>
+          </div>
         </Accordion>
 
         <Accordion
-          title="Časté dotazy"
-          isOpen={openAccordion === "faq"}
-          onClick={() => toggleAccordion("faq")}
+          title="👗👔 Jak se obléct?"
+          isOpen={openAccordion === "👗👔 Jak se obléct?"}
+          onClick={() => toggleAccordion("👗👔 Jak se obléct?")}
         >
-          <p>Níže jsou barvy naší svatby, budeme rádi, když si do nich sladíte šaty nebo doplňky, ale není to nutnost.</p>
-          <ImageContainer>
-            <img
-              src={`${process.env.PUBLIC_URL}/colours.png`}
-              alt="Svatba Colours"
-              style={{ width: "10%", borderRadius: "10px" }}
-            />
-          </ImageContainer>
-          <p>Zda s sebou vezmete děti nebo to rozjedete solo necháme na Vás! (nebo Vašich dětech)</p>
-          <p>Samotná Vaše přítomnost bude pro nás darem, ale oceníme finanční dary. (talíře už máme)</p>
-          <p>Pro hosty z Jížních Čech bude na místě připraveno ubytování. Pro lokální bude zařízen svoz a rozvoz. Pro dobrodruhy se volná postel (nebo podlaha) vždy najde nebo si může venku postavit stan.</p>
-          <WeddingMap />
+          Budeme hodně venku, takže je lepší nebrat jehlové podpatky, aby se
+          nebořily do trávy. A protože budeme venku i večer, klidně si vezměte
+          nějaké vrstvy navíc, kdyby se ochladilo.
         </Accordion>
 
-        <FooterImage src={`${process.env.PUBLIC_URL}/footer.jpg`} alt="Wedding Footer" />
+        <Accordion
+          title="🚌 Svoz a rozvoz místních"
+          isOpen={openAccordion === "🚌 Svoz a rozvoz místních"}
+          onClick={() => toggleAccordion("🚌 Svoz a rozvoz místních")}
+        >
+          Pro naše hosty, kteří bydlí blíž a neplánují u nás přespávat,
+          zajistíme svatební autobus. Ten pojede přes Vendolí a Svitavy, přesný
+          jízdní řád ještě upřesníme. Až vás svatební párty přestane bavit (i
+          když doufáme, že to bude až k ránu), bude pro vás přichystaný pohodlný
+          rozvoz autem, abyste se bez starostí a v klidu dostali domů. 🚗💨
+        </Accordion>
+
+        <Accordion
+          title="🛏 Pro hosty z větší dálky – kde složit hlavu?"
+          isOpen={
+            openAccordion === "🛏 Pro hosty z větší dálky – kde složit hlavu?"
+          }
+          onClick={() =>
+            toggleAccordion("🛏 Pro hosty z větší dálky – kde složit hlavu?")
+          }
+        >
+          Pokud k nám jedete z dálky, máme pro vás zařízené ubytování přímo v
+          penzionu, kde se bude svatba konat. (pokud si nejste jistí, jestli se
+          to týká i vás, klidně se nás zeptejte.) Budeme rádi, když dorazíte už
+          v pátek na večer – ať si v klidu vybalíte, rozkoukáte se a naladíte na
+          svatební vlnu. Samozřejmě můžete přijet i v sobotu, jen mějte na
+          paměti, že obřad je brzy a cesta z Jihu není úplně na otočku. Zůstat
+          můžete až do neděle do 15:00 – takže dost času na vyspání se z
+          kocoviny. Slavit se může klidně až do rána. 🥳
+        </Accordion>
+
+        <Accordion
+          title="🍽 Občerstvení pro hosty z větší dálky"
+          isOpen={openAccordion === "🍽 Občerstvení pro hosty z větší dálky"}
+          onClick={() =>
+            toggleAccordion("🍽 Občerstvení pro hosty z větší dálky")
+          }
+        >
+          Na pátek večer se budeme snažit připravit nějaké malé občerstvení, ale
+          protože penzion nemá restauraci, bude lepší, když si s sebou taky něco
+          přivezete. V sobotu ráno nebude plnohodnotná snídaně, ale něco malého
+          k zakousnutí tu bude, takže pokud rádi snídáte pořádně a nestačí vám
+          jen něco malého uzobávat, doporučujeme si přichystat vlastní zásoby.
+          Pokud byste si večer chtěli dopřát něco víc než jen malé občerstvení,
+          do Poličky to máte autem zhruba 10 minut, kde najdete několik
+          restaurací a můžete si pochutnat na dobrém jídle. Po obřadu už si
+          budeme všichni společně nacpávat pupíky – a jak se říká: „Šťastný lov
+          aj rybolov! A nech sa stoly prehýbajú!“ 🦣
+        </Accordion>
+
+        <Accordion
+          title="💌 A co dary?"
+          isOpen={openAccordion === "💌 A co dary?"}
+          onClick={() => toggleAccordion("💌 A co dary?")}
+        >
+          Společnou domácnost už máme (včetně sady talířů i oblíbeného otvíráku
+          na víno), takže pokud nám chcete udělat radost, budeme moc vděční za
+          finanční příspěvek. Pomůže nám uskutečnit další společné plány – ať už
+          velké nebo malé, spontánní nebo dospělácky rozumné. Děkujeme! ❤️
+        </Accordion>
+
+        <ElegantIntro>
+          <p>
+            Kdyby vás cokoli zajímalo nebo měli nějaký dotaz, klidně nám napište
+            nebo zavolejte.
+          </p>
+          <p>A čas od času sem mrkněte — info se může trochu změnit.</p>
+        </ElegantIntro>
+
+        <FooterImage
+          src={`${process.env.PUBLIC_URL}/footer.jpg`}
+          alt="Wedding Footer"
+        />
         <Footer>
           <p>Tááákhle moc se na Vás těšíme! ❤️</p>
         </Footer>
@@ -216,7 +347,7 @@ const App = () => {
 const Wrapper = styled.div`
   background-color: ${colors.background};
   color: ${colors.text};
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
 `;
 
 const HeroImage = styled.img`
