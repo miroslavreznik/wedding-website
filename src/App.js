@@ -263,15 +263,36 @@ const App = () => {
         </Accordion>
 
         <Accordion
-          title="🚌 Svoz a rozvoz místních"
+          title="NOVÉ INFO! 🚌 Svoz a rozvoz místních"
           isOpen={openAccordion === "🚌 Svoz a rozvoz místních"}
           onClick={() => toggleAccordion("🚌 Svoz a rozvoz místních")}
         >
-          Pro naše hosty, kteří bydlí blíž a neplánují u nás přespávat,
-          zajistíme svatební autobus. Ten pojede přes Vendolí a Svitavy, přesný
-          jízdní řád ještě upřesníme. Až vás svatební párty přestane bavit (i
-          když doufáme, že to bude až k ránu), bude pro vás přichystaný pohodlný
-          rozvoz autem, abyste se bez starostí a v klidu dostali domů. 🚗💨
+          <p>
+            Pro naše hosty, kteří bydlí blíž a neplánují u nás přespávat,
+            zajistíme svatební autobus.
+          </p>
+          <p>
+            Vypravíme pro Vás speciální autobusovou linku se sympatickým
+            průvodčím, která pojede ze Svitav, přes Vendolí, až do Penzionu Na
+            Lukách. Počítáme, že všichni, kdo můžete, autobus využijete a
+            začnete budovat atmosféru pěkně od rána!
+          </p>
+          <p>Přibližný jízdní řád:</p>
+          <p>SY autobusové nádraží - 9:00</p>
+          <p>SY Poličská - 9:05</p>
+          <p>Vendolí, dolní - 9:15</p>
+          <p>Vendolí, škola - 9:25</p>
+          <p>Vendolí, horní - 9:35</p>
+          <p>Široký Důl, Penzion Na Lukách - 9:55</p>
+          <p>
+            A jak se dostanu zpět? Zajistíme Vám dopravu ze svatby až přímo domů
+            přibližně od večerních hodin (18:00) do konce naši svatby. K
+            dispozici bude jeden osobák a jedno vícemístné auto s řidiči
+            připravenými na Vaše pokyny. Až vás svatební párty přestane bavit (i
+            když doufáme, že to bude až k ránu), bude pro vás přichystaný
+            pohodlný rozvoz autem, abyste se bez starostí a v klidu dostali
+            domů. 🚗💨
+          </p>
         </Accordion>
 
         <Accordion
@@ -294,7 +315,7 @@ const App = () => {
         </Accordion>
 
         <Accordion
-          title="🍽 Občerstvení pro hosty z větší dálky"
+          title="NOVÉ INFO! 🍽 Občerstvení pro hosty z větší dálky "
           isOpen={openAccordion === "🍽 Občerstvení pro hosty z větší dálky"}
           onClick={() =>
             toggleAccordion("🍽 Občerstvení pro hosty z větší dálky")
@@ -310,6 +331,16 @@ const App = () => {
           restaurací a můžete si pochutnat na dobrém jídle. Po obřadu už si
           budeme všichni společně nacpávat pupíky – a jak se říká: „Šťastný lov
           aj rybolov! A nech sa stoly prehýbajú!“ 🦣
+          <p>NOVÉ INFO:</p>
+          <p>
+            Večeře bude! Bude se podávat šunka sous vide s hořčicí a chlebem a
+            guláš ze zvěřiny, kterou zastřelil nevěstin taťka.
+          </p>
+          <p>
+            Doražte ale prosím v rozumnou hodinu, ať Vám má jídlo kdo dát a ať
+            se nevěsta stihne vyspat dorůžova.
+          </p>
+          <p>K snídani bude sladké a slané pečivo, čaj a káva.</p>
         </Accordion>
 
         <Accordion
